@@ -28,9 +28,13 @@ class Player(pygame.sprite.Sprite):
 
         self.rect = self.image.get_rect()
         self.rect.topleft = [pos_x,pos_y]
+
+
 #starts the animation
     def start(self):
         self.attack_animation = True
+
+        
 #Keeps the animation going until it reaches the end. 
     def update(self,speed):
         if self.attack_animation == True:
@@ -40,7 +44,8 @@ class Player(pygame.sprite.Sprite):
                 self.attack_animation = False
 
         self.image = self.sprites[int(self.current_sprite)]
-
+    def stop(self):
+        self.attack_animation = False
 # General setup
 pygame.init()
 clock = pygame.time.Clock()
@@ -63,6 +68,8 @@ while True:
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
             player.start()
+        if event.type == pygame.KEYDOWN:
+            player.stop()
 
     # Drawing
     screen.fill((250,250,250))
