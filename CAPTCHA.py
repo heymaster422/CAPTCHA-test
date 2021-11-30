@@ -44,6 +44,8 @@ class Player(pygame.sprite.Sprite):
                 self.attack_animation = False
 
         self.image = self.sprites[int(self.current_sprite)]
+
+#stops the animation
     def stop(self):
         self.attack_animation = False
 # General setup
